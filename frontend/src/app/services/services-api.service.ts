@@ -72,7 +72,7 @@ export class ServicesApiServices {
         this.userSubject$.next(user);
       }),
       catchError((e) => {
-        if (e.error === 'User does not exists') {
+        if (e.error === 'invalid_user') {
           this.userSubject$.next(null);
           this.logout$().subscribe();
           return of(null);
@@ -169,9 +169,10 @@ export class ServicesApiServices {
           page,
           total: parseInt(response.headers.get('X-Total-Count'), 10) || 0,
           accelerations: accelerations.concat(response.body || []),
+          pageAccelerations: response.body || [],
         })),
-        switchMap(({page, total, accelerations}) => {
-          if (accelerations.length >= Math.min(total, limit ?? Infinity) || (findTxid && accelerations.find((acc) => acc.txid === findTxid))) {
+        switchMap(({page, total, accelerations, pageAccelerations }) => {
+          if (pageAccelerations.length === 0 || accelerations.length >= Math.min(total, limit ?? Infinity) || (findTxid && accelerations.find((acc) => acc.txid === findTxid))) {
             return of({ page, total, accelerations });
           } else {
             return getPage$(page + 1, accelerations);
