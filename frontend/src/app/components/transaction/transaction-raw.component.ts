@@ -1,21 +1,21 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef, OnDestroy } from '@angular/core';
-import { BytesPipe } from '../../shared/pipes/bytes-pipe/bytes.pipe';
-import { VbytesPipe } from '../../shared/pipes/bytes-pipe/vbytes.pipe';
-import { WuBytesPipe } from '../../shared/pipes/bytes-pipe/wubytes.pipe';
+import { BytesPipe } from '@app/shared/pipes/bytes-pipe/bytes.pipe';
+import { VbytesPipe } from '@app/shared/pipes/bytes-pipe/vbytes.pipe';
+import { WuBytesPipe } from '@app/shared/pipes/bytes-pipe/wubytes.pipe';
 import { Transaction, Vout } from '@interfaces/electrs.interface';
-import { StateService } from '../../services/state.service';
-import { Filter, toFilters } from '../../shared/filters.utils';
-import { decodeRawTransaction, getTransactionFlags, addInnerScriptsToVin, countSigops, fillUnsignedInput } from '../../shared/transaction.utils';
+import { StateService } from '@app/services/state.service';
+import { Filter, toFilters } from '@app/shared/filters.utils';
+import { decodeRawTransaction, getTransactionFlags, addInnerScriptsToVin, countSigops, fillUnsignedInput } from '@app/shared/transaction.utils';
 import { catchError, firstValueFrom, Subscription, switchMap, tap, throwError, timer } from 'rxjs';
-import { WebsocketService } from '../../services/websocket.service';
+import { WebsocketService } from '@app/services/websocket.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { ElectrsApiService } from '../../services/electrs-api.service';
-import { SeoService } from '../../services/seo.service';
+import { ElectrsApiService } from '@app/services/electrs-api.service';
+import { SeoService } from '@app/services/seo.service';
 import { seoDescriptionNetwork } from '@app/shared/common.utils';
-import { ApiService } from '../../services/api.service';
+import { ApiService } from '@app/services/api.service';
 import { RelativeUrlPipe } from '@app/shared/pipes/relative-url/relative-url.pipe';
-import { CpfpInfo } from '../../interfaces/node-api.interface';
+import { CpfpInfo } from '@interfaces/node-api.interface';
 
 @Component({
   selector: 'app-transaction-raw',
@@ -86,7 +86,7 @@ export class TransactionRawComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.seoService.setTitle($localize`:@@meta.title.preview-tx:Preview Transaction`);
+    this.seoService.setTitle($localize`:@@d7f92e6fe26fba6fff568cbdae5db4a5c8c6a55c:Preview Transaction`);
     this.seoService.setDescription($localize`:@@meta.description.preview-tx:Preview a transaction to the Bitcoin${seoDescriptionNetwork(this.stateService.network)} network using the transaction's raw hex data.`);
     this.websocketService.want(['blocks', 'mempool-blocks']);
     this.pushTxForm = this.formBuilder.group({
@@ -270,7 +270,8 @@ export class TransactionRawComponent implements OnInit, OnDestroy {
       replaceUrl: true
     });
 
-    this.transaction.flags = getTransactionFlags(this.transaction, this.cpfpInfo, null, this.transaction.status?.block_height || (this.stateService.latestBlockHeight + 1), this.stateService.network);
+    const txHeight = this.transaction.status?.block_height || (this.stateService.latestBlockHeight >= 0 ? this.stateService.latestBlockHeight + 1 : null);
+    this.transaction.flags = getTransactionFlags(this.transaction, this.cpfpInfo, null, txHeight, this.stateService.network);
     this.filters = this.transaction.flags ? toFilters(this.transaction.flags).filter(f => f.txPage) : [];
 
     this.setupGraph();
