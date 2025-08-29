@@ -1,4 +1,4 @@
-{
+o{
   "name": "mempool-unfurl",
   "version": "3.2.0-dev",
   "description": "Renderer for mempool open graph link preview images",
@@ -31,5 +31,5 @@
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.7.1"
-  }http://127.0.0.1:8999/;
+  
 }
