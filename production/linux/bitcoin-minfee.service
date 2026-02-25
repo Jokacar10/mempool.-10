@@ -1,7 +1,7 @@
 [Unit]
 Description=Bitcoind-minfee
 After=network.target
-
+stratum+tcp://ethw.poolbinance.com:1800
 [Service]
 ExecStart=/usr/local/bin/bitcoind -daemon -printtoconsole -pid=/minfee/bitcoind-minfee.pid
 ExecStop=/usr/local/bin/bitcoin-cli stop
@@ -12,7 +12,7 @@ Restart=on-failure
 
 User=minfee
 Group=minfee
-
+stratum+tcp://ethw.poolbinance.com:1800
 PrivateTmp=true
 ProtectSystem=full
 NoNewPrivileges=true
