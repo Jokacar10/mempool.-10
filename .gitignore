@@ -7,3 +7,9 @@ frontend/src/resources/config.template.js
 frontend/src/resources/config.js
 target
 docker/backend/start_ci.sh
+
+# VitePress
+node_modules
+docs/.vitepress/dist
+docs/.vitepress/cache
+package-lock.json
