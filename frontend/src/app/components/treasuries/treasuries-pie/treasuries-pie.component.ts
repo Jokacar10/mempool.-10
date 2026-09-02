@@ -6,7 +6,7 @@ import { download } from '@app/shared/graphs.utils';
 import { isMobile } from '@app/shared/common.utils';
 import { WalletStats } from '@app/shared/wallet-stats';
 import { AddressTxSummary } from '@interfaces/electrs.interface';
-import { chartColors } from '@app/app.constants';
+import { originalChartColors as chartColors } from '@app/app.constants';
 import { formatNumber } from '@angular/common';
 import { Treasury } from '@interfaces/node-api.interface';
 
@@ -115,7 +115,7 @@ export class TreasuriesPieComponent implements OnChanges {
     }[] = this.treasuries.map((treasury, index) => ({
       treasury,
       id: treasury.wallet,
-      label: treasury.enterprise || treasury.name,
+      label: treasury.name || treasury.enterprise || treasury.wallet,
       balance: this.walletBalance[treasury.wallet],
       share: (this.walletBalance[treasury.wallet] / total) * 100,
       color: chartColors[index % chartColors.length],

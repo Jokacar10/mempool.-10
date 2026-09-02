@@ -1,4 +1,4 @@
-FROM node:22.14.0-bookworm-slim AS builder
+FROM node:22.22.3-bookworm-slim AS builder
 
 ARG commitHash
 ENV DOCKER_COMMIT_HASH=${commitHash}
@@ -13,7 +13,7 @@ RUN npm install --omit=dev --omit=optional
 
 RUN npm run build
 
-FROM nginx:1.27.0-alpine
+FROM nginx:1.29.5-alpine
 
 WORKDIR /patch
 
