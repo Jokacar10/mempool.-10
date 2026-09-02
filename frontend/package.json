@@ -118,6 +118,9 @@
     "mock-socket": "~9.3.1",
     "start-server-and-test": "~2.0.0"
   },
+  "overrides": {
+    "undici": "7.29.0"
+  },
   "scarfSettings": {
     "enabled": false
   }
