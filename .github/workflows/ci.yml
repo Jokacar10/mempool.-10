@@ -315,8 +315,8 @@ jobs:
           start: npm run start:parameterized
           wait-on: "http://localhost:4200"
           wait-on-timeout: 120
-          record: true
-          parallel: true
+          record: ${{ secrets.CYPRESS_RECORD_KEY != '' }}
+          parallel: ${{ secrets.CYPRESS_RECORD_KEY != '' }}
           spec: |
             cypress/e2e/mainnet/*.spec.ts
             cypress/e2e/signet/*.spec.ts
@@ -340,8 +340,8 @@ jobs:
           start: npm run start:parameterized
           wait-on: "http://localhost:4200"
           wait-on-timeout: 120
-          record: true
-          parallel: true
+          record: ${{ secrets.CYPRESS_RECORD_KEY != '' }}
+          parallel: ${{ secrets.CYPRESS_RECORD_KEY != '' }}
           spec: |
             cypress/e2e/liquid/liquid.spec.ts
             cypress/e2e/liquidtestnet/liquidtestnet.spec.ts
@@ -365,8 +365,8 @@ jobs:
           start: npm run start:parameterized
           wait-on: "http://localhost:4200"
           wait-on-timeout: 120
-          record: true
-          parallel: true
+          record: ${{ secrets.CYPRESS_RECORD_KEY != '' }}
+          parallel: ${{ secrets.CYPRESS_RECORD_KEY != '' }}
           spec: |
             cypress/e2e/testnet4/*.spec.ts
           group: Tests on Chrome (${{ matrix.module }})
