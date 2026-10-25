@@ -180,10 +180,7 @@ class WalletApi {
 
         // update list of treasuries
         const treasuriesResponse = await axios.get(config.MEMPOOL_SERVICES.API + `/treasuries`);
-<<<<<<< HEAD
-=======
         console.log(treasuriesResponse.data);
->>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
         this.treasuries = treasuriesResponse.data || [];
       } catch (e) {
         logger.err(`Error updating active wallets: ${(e instanceof Error ? e.message : e)}`);

@@ -8,11 +8,7 @@
     "HTTP_PORT": 7,
     "NETWORK": "river"
   },
-<<<<<<< HEAD
-  "PUPPETEER"
-=======
   "PUPPETEER": {
->>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
     "CLUSTER_SIZE": 2,
     "EXEC_PATH": "/usr/local/bin/chrome",
     "MAX_PAGE

@@ -6,11 +6,7 @@ import { download } from '@app/shared/graphs.utils';
 import { isMobile } from '@app/shared/common.utils';
 import { WalletStats } from '@app/shared/wallet-stats';
 import { AddressTxSummary } from '@interfaces/electrs.interface';
-<<<<<<< HEAD
 import { originalChartColors as chartColors } from '@app/app.constants';
-=======
-import { chartColors } from '@app/app.constants';
->>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
 import { formatNumber } from '@angular/common';
 import { Treasury } from '@interfaces/node-api.interface';
 
@@ -119,11 +115,7 @@ export class TreasuriesPieComponent implements OnChanges {
     }[] = this.treasuries.map((treasury, index) => ({
       treasury,
       id: treasury.wallet,
-<<<<<<< HEAD
       label: treasury.name || treasury.enterprise || treasury.wallet,
-=======
-      label: treasury.enterprise || treasury.name,
->>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
       balance: this.walletBalance[treasury.wallet],
       share: (this.walletBalance[treasury.wallet] / total) * 100,
       color: chartColors[index % chartColors.length],
@@ -294,4 +286,3 @@ export class TreasuriesPieComponent implements OnChanges {
     return (e.offsetWidth < e.scrollWidth);
   }
 }
-

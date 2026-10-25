@@ -3,13 +3,8 @@ import { getVarIntLength, parseMultisigScript, isPoint, parseTapscriptMultisig, 
 import { Transaction, Vin } from '@interfaces/electrs.interface';
 import { CpfpInfo, RbfInfo, TransactionStripped } from '@interfaces/node-api.interface';
 import { StateService } from '@app/services/state.service';
-<<<<<<< HEAD
 import { hash, Hash } from '@app/shared/sha256';
 import { AddressType } from '@app/shared/address-utils';
-=======
-import { hash, Hash } from './sha256';
-import { AddressType } from './address-utils';
->>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
 
 // Bitcoin Core default policy settings
 const MAX_STANDARD_TX_WEIGHT = 400_000;
@@ -292,21 +287,12 @@ export function processInputSignatures(vin: Vin): SigInfo[] {
       signatures = extractDERSignaturesWitness(vin.witness || []);
       break;
     case 'v1_p2tr': {
-<<<<<<< HEAD
       const hasAnnex = vin.witness?.length > 1 && vin.witness[vin.witness.length - 1].startsWith('50');
       const isKeyspend = vin.witness?.length === (hasAnnex ? 2 : 1);
       if (isKeyspend) {
         signatures = extractSchnorrSignatures(vin.witness);
       } else {
         const stackItems = vin.witness?.slice(0, hasAnnex ? -3 : -2);
-=======
-      const hasAnnex = vin.witness.length > 1 &&vin.witness[vin.witness.length - 1].startsWith('50');
-      const isKeyspend = vin.witness.length === (hasAnnex ? 2 : 1);
-      if (isKeyspend) {
-        signatures = extractSchnorrSignatures(vin.witness);
-      } else {
-        const stackItems = vin.witness.slice(0, hasAnnex ? -3 : -2);
->>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
         signatures = extractSchnorrSignatures(stackItems);
       }
     } break;
@@ -317,7 +303,6 @@ export function processInputSignatures(vin: Vin): SigInfo[] {
   return signatures;
 }
 
-<<<<<<< HEAD
 /*  
  * returns the number of missing signatures, the number of bytes to add to the transaction
  * and whether these should benefit from witness discounting
@@ -468,8 +453,6 @@ export function fillUnsignedInput(vin: Vin): { missingSigs: number, bytes: numbe
   return { missingSigs, bytes, addToWitness };
 }
 
-=======
->>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
 /**
  * Validates most standardness rules
  *

@@ -3,11 +3,7 @@ import { formatDate, formatNumber } from '@angular/common';
 import { EChartsOption } from '@app/graphs/echarts';
 import { StateService } from '@app/services/state.service';
 import { map, Subscription, switchMap } from 'rxjs';
-<<<<<<< HEAD
 import { PriceService } from '@app/services/price.service';
-=======
-import { PriceService } from '../../services/price.service';
->>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
 import { AmountShortenerPipe } from '@app/shared/pipes/amount-shortener.pipe';
 
 @Component({
@@ -43,11 +39,7 @@ export class LbtcPegsGraphComponent implements OnInit, OnChanges {
   adjustedLeft: number;
   adjustedRight: number;
   selected = {
-<<<<<<< HEAD
     'LBTC': true,
-=======
-    'L-BTC': true,
->>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
     'BTC': true,
     'USD': false,
   };
@@ -126,11 +118,7 @@ export class LbtcPegsGraphComponent implements OnInit, OnChanges {
       legend: {
         data: [
           {
-<<<<<<< HEAD
             name: 'LBTC',
-=======
-            name: 'L-BTC',
->>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
             inactiveColor: 'var(--grey)',
             textStyle: {
               color: 'white',
@@ -229,11 +217,7 @@ export class LbtcPegsGraphComponent implements OnInit, OnChanges {
       series: [
         {
           data: pegSeries,
-<<<<<<< HEAD
           name: 'LBTC',
-=======
-          name: 'L-BTC',
->>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
           yAxisIndex: 0,
           color: '#116761',
           type: 'line',
@@ -282,11 +266,7 @@ export class LbtcPegsGraphComponent implements OnInit, OnChanges {
   onLegendSelectChanged(e) {
     this.selected = e.selected;
     this.adjustedRight = this.selected['USD'] ? +this.right + 40 : +this.right;
-<<<<<<< HEAD
     this.adjustedLeft = this.selected['LBTC'] || this.selected['BTC'] ? +this.left : +this.left - 40;
-=======
-    this.adjustedLeft = this.selected['L-BTC'] || this.selected['BTC'] ? +this.left : +this.left - 40;
->>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
 
     this.pegsChartOptions = {
       ...this.pegsChartOptions,
@@ -311,4 +291,3 @@ export class LbtcPegsGraphComponent implements OnInit, OnChanges {
     this.subscription?.unsubscribe();
   }
 }
-
