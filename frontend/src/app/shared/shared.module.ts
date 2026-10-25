@@ -7,8 +7,12 @@ import { faFilter, faAngleDown, faAngleUp, faAngleRight, faAngleLeft, faBolt, fa
   faFileAlt, faRedoAlt, faArrowAltCircleRight, faExternalLinkAlt, faListUl, faDownload, faQrcode, faArrowRightArrowLeft, faArrowsRotate, faCircleLeft,
   faFastForward, faWallet, faUserClock, faWrench, faUserFriends, faQuestionCircle, faHistory, faSignOutAlt, faKey, faSuitcase, faIdCardAlt, faNetworkWired, faUserCheck,
   faCircleCheck, faUserCircle, faCheck, faRocket, faScaleBalanced, faHourglassStart, faHourglassHalf, faHourglassEnd, faWandMagicSparkles, faTimeline,
+<<<<<<< HEAD
   faCircleXmark, faCalendarCheck, faMoneyBillTrendUp, faRobot, faShareNodes, faCreditCard, faMicroscope, faExclamationTriangle, faLockOpen, faPaperclip, faAddressCard,
   faMedal, faBug, faFilePdf, faPiggyBank, faLayerGroup, faHeart, faCashRegister } from '@fortawesome/free-solid-svg-icons';
+=======
+  faCircleXmark, faCalendarCheck, faMoneyBillTrendUp, faRobot, faShareNodes, faCreditCard, faMicroscope, faExclamationTriangle, faLockOpen, faPaperclip } from '@fortawesome/free-solid-svg-icons';
+>>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MenuComponent } from '@components/menu/menu.component';
 import { PreviewTitleComponent } from '@components/master-page-preview/preview-title.component';
@@ -473,6 +477,7 @@ export class SharedModule {
     library.addIcons(faExclamationTriangle);
     library.addIcons(faLockOpen);
     library.addIcons(faPaperclip);
+<<<<<<< HEAD
     library.addIcons(faMedal);
     library.addIcons(faAddressCard);
     library.addIcons(faBug);
@@ -481,5 +486,7 @@ export class SharedModule {
     library.addIcons(faLayerGroup);
     library.addIcons(faHeart);
     library.addIcons(faCashRegister);
+=======
+>>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
   }
 }

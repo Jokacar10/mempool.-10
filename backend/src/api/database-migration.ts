@@ -7,7 +7,11 @@ import cpfpRepository from '../repositories/CpfpRepository';
 import { RowDataPacket } from 'mysql2';
 
 class DatabaseMigration {
+<<<<<<< HEAD
   private static currentVersion = 101;
+=======
+  private static currentVersion = 98;
+>>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
   private queryTimeout = 3600_000;
   private statisticsAddedIndexed = false;
   private uniqueLogs: string[] = [];
@@ -1154,6 +1158,7 @@ class DatabaseMigration {
       await this.$executeQuery('UPDATE blocks_summaries SET version = 0 WHERE height >= 896070;');
       await this.updateToSchemaVersion(98);
     }
+<<<<<<< HEAD
 
     // Add vsize_0 to statistics table
     if (databaseSchemaVersion < 99) {
@@ -1167,6 +1172,8 @@ class DatabaseMigration {
       await this.$executeQuery('ALTER TABLE `blocks` ADD index_version INT NOT NULL DEFAULT 0');
       await this.$executeQuery('ALTER TABLE `blocks` ADD INDEX `index_version` (`index_version`)');
     }
+=======
+>>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
   }
 
   /**

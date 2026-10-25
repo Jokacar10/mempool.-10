@@ -6,7 +6,11 @@ import { StateService } from '@app/services/state.service';
 import { catchError, map, scan, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
 import { WalletStats } from '@app/shared/wallet-stats';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
 import { originalChartColors as chartColors } from '@app/app.constants';
+=======
+import { chartColors } from '@app/app.constants';
+>>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
 import { Treasury } from '@interfaces/node-api.interface';
 @Component({
   selector: 'app-treasuries',

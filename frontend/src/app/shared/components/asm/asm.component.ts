@@ -28,7 +28,11 @@ export class AsmComponent {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+<<<<<<< HEAD
     if (changes['asm'] || changes['crop']) {
+=======
+    if (changes['asm']) {
+>>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
       this.parseASM();
     }
   }
@@ -36,6 +40,7 @@ export class AsmComponent {
   parseASM(): void {
     let instructions = this.asm.split('OP_');
     // trim instructions to a whole number of instructions with at most `crop` characters total
+<<<<<<< HEAD
     if (this.crop && this.asm.length > this.crop) {
       let chars = 0;
       for (let i = 0; i < instructions.length; i++) {
@@ -65,6 +70,16 @@ export class AsmComponent {
           break;
         }
         chars += instructions[i].length + 3;
+=======
+    if (this.crop) {
+      let chars = 0;
+      for (let i = 0; i < instructions.length; i++) {
+        chars += instructions[i].length + 3;
+        if (chars > this.crop) {
+          instructions = instructions.slice(0, i);
+          break;
+        }
+>>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
       }
     }
     this.instructions = instructions.filter(instruction => instruction.trim() !== '').map(instruction => {
@@ -103,7 +118,10 @@ export class AsmComponent {
     ['ELSE', 'control'],
     ['ENDIF', 'control'],
     ['VERIFY', 'control'],
+<<<<<<< HEAD
     ['RETURN', 'control'],
+=======
+>>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
     ...Array.from({length: 70}, (_, i) => [`RETURN_${i + 186}`, 'control']),
 
     // Stack

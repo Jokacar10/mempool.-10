@@ -17,7 +17,11 @@ import { Etching, Runestone } from '@app/shared/ord/rune.utils';
 import { ADDRESS_SIMILARITY_THRESHOLD, AddressMatch, AddressSimilarity, AddressType, AddressTypeInfo, checkedCompareAddressStrings, detectAddressType } from '@app/shared/address-utils';
 import { processInputSignatures, Sighash, SigInfo, SighashLabels } from '@app/shared/transaction.utils';
 import { ActivatedRoute } from '@angular/router';
+<<<<<<< HEAD
 import { SighashFlag } from '@app/shared/transaction.utils';
+=======
+import { SighashFlag } from '../../shared/transaction.utils';
+>>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
 
 @Component({
   selector: 'app-transactions-list',
@@ -95,10 +99,14 @@ export class TransactionsListComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     this.latestBlock$ = this.stateService.blocks$.pipe(map((blocks) => blocks[0]));
+<<<<<<< HEAD
     this.networkSubscription = this.stateService.networkChanged$.subscribe((network) => {
       this.network = network;
       this.isLiquid = network === 'liquid' || network === 'liquidtestnet';
     });
+=======
+    this.networkSubscription = this.stateService.networkChanged$.subscribe((network) => this.network = network);
+>>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
 
     this.signaturesSubscription = this.stateService.signaturesMode$.subscribe((mode) => {
       this.signaturesPreference = mode;
@@ -336,6 +344,7 @@ export class TransactionsListComponent implements OnInit, OnChanges, OnDestroy {
             }
           }
           tx['_showSignatures'] = this.shouldShowSignatures(tx);
+<<<<<<< HEAD
         } else { // check for simplicity script spends
           for (const vin of tx.vin) {
             if (vin.prevout?.scriptpubkey_type === 'v1_p2tr' && vin.inner_witnessscript_asm) {
@@ -352,6 +361,8 @@ export class TransactionsListComponent implements OnInit, OnChanges, OnDestroy {
               }
             }
           }
+=======
+>>>>>>> origin/backend/src/api/bitcoin/bitcoin.routes.ts
         }
 
         tx.largeInput = tx.largeInput || tx.vin.some(vin => (vin?.prevout?.value > 1000000000));
