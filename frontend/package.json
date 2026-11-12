@@ -73,7 +73,7 @@
     "@angular/platform-server": "^18.2.14",
     "@angular/router": "^17.3.1",
     "@angular/ssr": "^18.2.21",
-    "@fortawesome/angular-fontawesome": "~0.14.1",
+    "@fortawesome/angular-fontawesome": "~0.15.0",
     "@fortawesome/fontawesome-common-types": "~6.7.2",
     "@fortawesome/fontawesome-svg-core": "~6.7.2",
     "@fortawesome/free-solid-svg-icons": "~6.7.2",
@@ -93,7 +93,7 @@
     "tinyify": "^4.0.0",
     "tlite": "^0.1.9",
     "tslib": "~2.8.0",
-    "zone.js": "~0.14.4"
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^17.3.1",
